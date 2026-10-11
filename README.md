@@ -19,7 +19,8 @@ mint integrations search sandbox --project .
 `update --registry` copies `records/v0.json` into
 `.mint/catalog-records.json`. It does not pip, download, or execute.
 
-Canonical wheels remain GitHub Releases. There is no `latest` alias and
-no integration PyPI.
+Canonical catalog snapshots are GitHub Releases of this repository.
+Pin a release tag or commit SHA. There is no `latest` alias, no
+`/releases/latest` pin, and no integration PyPI.
 
 Apache-2.0.
