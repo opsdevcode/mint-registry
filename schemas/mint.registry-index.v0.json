@@ -1,0 +1,77 @@
+{
+  "$id": "mint.registry-index/v0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Public index for mint-registry snapshots. Language-site /integrations fetches this, then records.",
+  "properties": {
+    "assets": {
+      "additionalProperties": false,
+      "properties": {
+        "checksums": {"const": "SHA256SUMS"},
+        "index": {"const": "index.json"},
+        "records": {"const": "v0.json"}
+      },
+      "required": ["checksums", "index", "records"],
+      "type": "object"
+    },
+    "canonical": {"const": "github-release"},
+    "catalogSchema": {"const": "mint.catalog-records/v0"},
+    "entries": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "artifactDigest": {"pattern": "^sha256:[0-9a-f]{64}$", "type": "string"},
+          "commit": {"pattern": "^[0-9a-f]{40}$", "type": "string"},
+          "identity": {"type": "string"},
+          "manifestDigest": {"pattern": "^sha256:[0-9a-f]{64}$", "type": "string"},
+          "origin": {"const": "github"},
+          "repository": {"type": "string"},
+          "tag": {"type": "string"}
+        },
+        "required": [
+          "artifactDigest",
+          "commit",
+          "identity",
+          "manifestDigest",
+          "origin",
+          "repository",
+          "tag"
+        ],
+        "type": "object"
+      },
+      "minItems": 2,
+      "type": "array"
+    },
+    "fetch": {
+      "additionalProperties": false,
+      "properties": {
+        "cors": {"const": "raw"},
+        "raw": {
+          "const": "https://raw.githubusercontent.com/opsdevcode/mint-registry/{tag}/"
+        },
+        "recordsPath": {"const": "records/v0.json"},
+        "releaseDownload": {
+          "const": "https://github.com/opsdevcode/mint-registry/releases/download/{tag}/"
+        }
+      },
+      "required": ["cors", "raw", "recordsPath", "releaseDownload"],
+      "type": "object"
+    },
+    "hostedService": {"const": false},
+    "records": {"const": "records/v0.json"},
+    "schema": {"const": "mint.registry-index/v0"},
+    "version": {"const": "v0"}
+  },
+  "required": [
+    "assets",
+    "canonical",
+    "catalogSchema",
+    "entries",
+    "fetch",
+    "hostedService",
+    "records",
+    "schema",
+    "version"
+  ],
+  "type": "object"
+}

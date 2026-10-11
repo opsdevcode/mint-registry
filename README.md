@@ -23,4 +23,9 @@ Canonical catalog snapshots are GitHub Releases of this repository.
 Pin a release tag or commit SHA. There is no `latest` alias, no
 `/releases/latest` pin, and no integration PyPI.
 
+The public `/integrations` directory is rendered by the language GitHub
+Pages site from these snapshots (anonymous HTTP). Fetch contract:
+[docs/directory.md](docs/directory.md). This repository stays JSON only;
+GitHub Pages on mint-registry stays off.
+
 Apache-2.0.

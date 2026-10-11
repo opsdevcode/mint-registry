@@ -52,11 +52,44 @@ def main() -> int:
         fail("index.json schema must be mint.registry-index/v0")
     if index.get("records") != "records/v0.json":
         fail("index.json records must point at records/v0.json")
+    if index.get("hostedService") is not False:
+        fail("index.json hostedService must be false")
+    if index.get("canonical") != "github-release":
+        fail("index.json canonical must be github-release")
+    fetch = index.get("fetch") or {}
+    if fetch.get("cors") != "raw":
+        fail("index.json fetch.cors must be raw for language-site browser fetch")
+    if "{tag}" not in str(fetch.get("releaseDownload", "")):
+        fail("index.json fetch.releaseDownload must be a GitHub Release {tag} template")
+    if "raw.githubusercontent.com" not in str(fetch.get("raw", "")):
+        fail("index.json fetch.raw must use raw.githubusercontent.com")
+    assets = index.get("assets") or {}
+    if assets.get("records") != "v0.json":
+        fail("release asset name for records must be v0.json")
     dumped = json.dumps(records) + json.dumps(index)
     if "pypi.org" in dumped.lower() and "not PyPI" not in dumped:
         fail("canonical coordinates must be GitHub Releases, not PyPI")
     if '"latest"' in dumped:
         fail("records must not use a latest alias")
+    directory_doc = ROOT / "docs" / "directory.md"
+    if not directory_doc.is_file():
+        fail("docs/directory.md is required for language-site /integrations fetch")
+    directory_text = directory_doc.read_text(encoding="utf-8")
+    for needle in (
+        "v0.2.0-alpha.0",
+        "releases/download",
+        "raw.githubusercontent.com",
+        "/integrations",
+        "hosted",
+    ):
+        if needle not in directory_text:
+            fail(f"docs/directory.md must document {needle}")
+    for schema_name in (
+        "mint.catalog-records.v0.json",
+        "mint.registry-index.v0.json",
+    ):
+        if not (ROOT / "schemas" / schema_name).is_file():
+            fail(f"missing schemas/{schema_name}")
     integrations = records.get("integrations")
     if not isinstance(integrations, list) or len(integrations) < 2:
         fail("records/v0.json needs official local and github integrations")

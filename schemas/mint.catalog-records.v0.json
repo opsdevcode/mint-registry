@@ -1,0 +1,104 @@
+{
+  "$id": "mint.catalog-records/v0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "capabilities": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string"},
+          "support": {"enum": ["full", "partial", "none"]},
+          "targetKinds": {"items": {"type": "string"}, "type": "array"},
+          "version": {"type": "string"}
+        },
+        "required": ["id", "support", "targetKinds", "version"],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "integrations": {
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {"origin": {"const": "github"}},
+              "required": ["origin"]
+            },
+            "then": {
+              "required": ["artifactDigest", "manifestDigest", "release"]
+            }
+          }
+        ],
+        "properties": {
+          "artifactDigest": {"type": "string"},
+          "capabilities": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "id": {"type": "string"},
+                "version": {"type": "string"}
+              },
+              "required": ["id", "version"],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "executionSupport": {"enum": ["none", "fake", "privileged"]},
+          "identity": {"type": "string"},
+          "manifestDigest": {"type": "string"},
+          "name": {"type": "string"},
+          "origin": {"enum": ["packaged", "local", "github"]},
+          "phases": {"items": {"type": "string"}, "type": "array"},
+          "release": {
+            "additionalProperties": false,
+            "properties": {
+              "artifact": {"type": "string"},
+              "commit": {"pattern": "^[0-9a-f]{40}$", "type": "string"},
+              "repository": {"type": "string"},
+              "tag": {"type": "string"},
+              "url": {"type": "string"}
+            },
+            "required": ["artifact", "repository", "tag", "url"],
+            "type": "object"
+          },
+          "summary": {"type": "string"},
+          "targetKinds": {"items": {"type": "string"}, "type": "array"},
+          "version": {"type": "string"}
+        },
+        "required": [
+          "capabilities",
+          "executionSupport",
+          "identity",
+          "name",
+          "origin",
+          "phases",
+          "summary",
+          "targetKinds",
+          "version"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schema": {"const": "mint.catalog-records/v0"},
+    "targetKinds": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "fields": {"type": "array"},
+          "kind": {"type": "string"}
+        },
+        "required": ["fields", "kind"],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "version": {"const": "v0"}
+  },
+  "required": ["capabilities", "schema", "targetKinds", "version"],
+  "type": "object"
+}
