@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0-alpha.0](https://github.com/opsdevcode/mint-registry/compare/v0.2.0-alpha.0...v0.3.0-alpha.0) (2026-10-11)
+
+
+### Features
+
+* add public directory fetch contract ([#4](https://github.com/opsdevcode/mint-registry/issues/4)) ([d564f6f](https://github.com/opsdevcode/mint-registry/commit/d564f6f4ac8f69cbce21ba11612a771a7a838f53))
+
 ## [0.2.0-alpha.0](https://github.com/opsdevcode/mint-registry/compare/v0.1.0-alpha.0...v0.2.0-alpha.0) (2026-10-11)
 
 
