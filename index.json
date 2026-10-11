@@ -1,0 +1,26 @@
+{
+  "catalogSchema": "mint.catalog-records/v0",
+  "records": "records/v0.json",
+  "schema": "mint.registry-index/v0",
+  "version": "v0",
+  "entries": [
+    {
+      "artifactDigest": "sha256:1cf952cceb4fec8008b42b5a6e12e1f604d24dec37fcbcb7371dfc7eb3a3a35d",
+      "commit": "c0fc6e734a2ffbe95508a6cc9183b382d458bcd6",
+      "identity": "local.sandbox.ensure_marker",
+      "manifestDigest": "sha256:cde4adf9e5f4c9e0b127cd11e6e977d25857d4a72602702ffe8a57223b05100e",
+      "origin": "github",
+      "repository": "opsdevcode/mint-integration-local",
+      "tag": "v0.2.1-alpha.1"
+    },
+    {
+      "artifactDigest": "sha256:2307ee7cb58229851b42b02408bb7eb5d9ce3b2878153e6b620a8e54a0c9a0e5",
+      "commit": "53df7396b03c0af5ddf28255d5003cd61e838e97",
+      "identity": "repo.github.plan",
+      "manifestDigest": "sha256:1b805a915d950c614c99089942252abbe6d846658afa741b28824330feba41f9",
+      "origin": "github",
+      "repository": "opsdevcode/mint-integration-github",
+      "tag": "v0.3.0-alpha.1"
+    }
+  ]
+}
