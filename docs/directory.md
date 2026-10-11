@@ -37,8 +37,9 @@ https://github.com/opsdevcode/mint-registry/releases/download/v0.2.0-alpha.0/SHA
 
 `github.com/releases/download/...` redirects without
 `Access-Control-Allow-Origin`. Browser `fetch` from
-`https://opsdevcode.github.io/specmint-language/` should use the same
-tag on `raw.githubusercontent.com` (CORS `*`), then verify SHA-256
+`https://opsdevcode.github.io/specmint-language/` (and
+`https://mint.opsdevco.de/` after the Pages CNAME answers) should use the
+same tag on `raw.githubusercontent.com` (CORS `*`), then verify SHA-256
 against the pinned `SHA256SUMS`:
 
 ```text
