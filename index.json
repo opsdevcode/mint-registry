@@ -1,8 +1,11 @@
 {
+  "assets": {
+    "checksums": "SHA256SUMS",
+    "index": "index.json",
+    "records": "v0.json"
+  },
+  "canonical": "github-release",
   "catalogSchema": "mint.catalog-records/v0",
-  "records": "records/v0.json",
-  "schema": "mint.registry-index/v0",
-  "version": "v0",
   "entries": [
     {
       "artifactDigest": "sha256:1cf952cceb4fec8008b42b5a6e12e1f604d24dec37fcbcb7371dfc7eb3a3a35d",
@@ -22,5 +25,15 @@
       "repository": "opsdevcode/mint-integration-github",
       "tag": "v0.3.0-alpha.1"
     }
-  ]
+  ],
+  "fetch": {
+    "cors": "raw",
+    "raw": "https://raw.githubusercontent.com/opsdevcode/mint-registry/{tag}/",
+    "recordsPath": "records/v0.json",
+    "releaseDownload": "https://github.com/opsdevcode/mint-registry/releases/download/{tag}/"
+  },
+  "hostedService": false,
+  "records": "records/v0.json",
+  "schema": "mint.registry-index/v0",
+  "version": "v0"
 }

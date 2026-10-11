@@ -95,6 +95,8 @@ class ReleaseAutomationTests(unittest.TestCase):
         text = README.read_text(encoding="utf-8")
         self.assertIn("no `latest`", text)
         self.assertIn("no server", text)
+        self.assertIn("docs/directory.md", text)
+        self.assertIn("JSON only", text)
 
 
 if __name__ == "__main__":
